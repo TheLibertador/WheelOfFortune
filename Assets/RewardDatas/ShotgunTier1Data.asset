@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d22af9e5058fd5347b2f236828528539, type: 3}
+  m_Name: ShotgunTier1Data
+  m_EditorClassIdentifier: 
+  isBomb: 0
+  amount: 1
+  rewardName: Shotgun
+  image: {fileID: -643112790, guid: 410de098f3dfc604288ceb4e39e165e8, type: 3}

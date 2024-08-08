@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d22af9e5058fd5347b2f236828528539, type: 3}
-  m_Name: Bomb
+  m_Name: RifleT2Data
   m_EditorClassIdentifier: 
-  isBomb: 1
+  isBomb: 0
   amount: 1
-  rewardName: Failed
-  image: {fileID: 21300000, guid: 1cffa3a71a46e0440a0f1ba30df6910b, type: 3}
+  rewardName: Tier 2 Rifle
+  image: {fileID: 21300000, guid: 7ebc37d59325d5c459a28e162020eb1d, type: 3}

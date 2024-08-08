@@ -29,7 +29,7 @@ public class WheelRotateHandler : MonoBehaviour
     private void HandleOnComplete()
     {
         Debug.Log(GameManager.Instace.GetCurrentReward());
-        GameManager.Instace.ChangeGameState(GameManager.GameState.SpinEnded);
+        GameManager.Instace.ChangeGameState(GameManager.GameState.RewardsCollected);
         Debug.Log(GameManager.Instace.currentState);
     }
 
