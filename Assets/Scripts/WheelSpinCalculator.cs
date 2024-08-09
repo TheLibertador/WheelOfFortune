@@ -14,9 +14,10 @@ public class WheelSpinCalculator : MonoBehaviour
     private int minSpinCount = 3;
     private int maxSpinCount = 5;
     
-    public void GenerateRandomRewardIndex()
+    public int GenerateRandomRewardIndex()
     {
         currentRewardIndex = Random.Range(0, rewardNum);
+        return currentRewardIndex;
     }
 
     public int GetCurrentRewardIndex()

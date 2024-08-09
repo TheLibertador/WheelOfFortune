@@ -7,11 +7,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instace;
 
     [SerializeField] private WheelSpinCalculator wheelSpinCalculator;
-    [SerializeField] private WheelRotateHandler wheelRotateHandler;
     [SerializeField] private SlotManager slotManager;
-    [SerializeField] private RewardManager rewardManager;
+  
 
-    private int spinCount = 0;
+    private int spinCount = 1;
+    private int currentRewardIndex; 
+    private float currentSpinRotation;
 
 
     public enum GameState
@@ -19,11 +20,29 @@ public class GameManager : MonoBehaviour
         MainMenuActive,
         SpinStarted,
         SpinEnded,
-        RewardsCollected,
+        RewardCollected,
+        AllRewardsCollected,
         GameFailed
     }
-
     public GameState currentState = GameState.MainMenuActive;
+
+    public delegate void GameStateChanged(GameState newState);
+
+    public static event GameStateChanged OnGameStateChanged;
+
+    public enum Zone
+    {
+        Bronze,
+        Gold,
+        Silver
+    }
+    public Zone currentZone = Zone.Bronze;
+
+    public delegate void ZoneChanged(Zone newZone);
+
+    public static event ZoneChanged OnZoneChanged;
+
+    
 
     private void Awake()
     {
@@ -37,12 +56,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public float GetWheelRotation()
+    {
+        return currentSpinRotation;
+    }
 
     public void SpinWheel()
     {
-        ChangeGameState(GameState.SpinStarted);
-        wheelSpinCalculator.GenerateRandomRewardIndex();
-        wheelRotateHandler.RotateWheel(wheelSpinCalculator.GenerateRandomRotationAngle());
+        currentRewardIndex = wheelSpinCalculator.GenerateRandomRewardIndex();
+        currentSpinRotation = wheelSpinCalculator.GenerateRandomRotationAngle();
+        ChangeGameState(GameState.SpinStarted);  
     }
 
     private void IncreaseSpinCount()
@@ -50,46 +73,78 @@ public class GameManager : MonoBehaviour
         spinCount++;
     }
 
+    private void ResetSpinCount()
+    {
+        spinCount = 1;
+    }
+
     public int GetSpinCount()
     {
         return spinCount;
     }
+
+
     public int GetCurrentReward()
     {
-        return wheelSpinCalculator.GetCurrentRewardIndex();
+        return currentRewardIndex;
     }
 
-    public RewardDataSO GetRewardData(int rewardIndex)
+    public RewardDataSO GetCurrentRewardData()
     {
-        return slotManager.GetRewardData(rewardIndex);
+        return slotManager.GetRewardData(GetCurrentReward());
     }
 
-    private  void ListRewards()
-    {
-        Dictionary<RewardDataSO, float> earnedRewards = rewardManager.GetEarnedRewards();
-        foreach (var reward in earnedRewards)
-        {
-            Debug.Log($"Reward: {reward.Key.rewardName}, Amount: {reward.Value}");
-        }
-    }
+    
     public void ChangeGameState(GameState state)
     {
-        currentState = state;
-        switch (state)
+        if (currentState != state)
         {
-            case GameState.MainMenuActive:
-                break;
-            case GameState.SpinStarted:
-                
-                break;
-            case GameState.SpinEnded:
-                rewardManager.SaveCurrentReward(GetRewardData(GetCurrentReward()));
-                break;
-            case GameState.RewardsCollected:
-                ListRewards();
-                break;
-            case GameState.GameFailed:
-                break;
+            currentState = state;
+            OnGameStateChanged?.Invoke(state); 
+
+            switch (state)
+            {
+                case GameState.MainMenuActive:
+                    ResetSpinCount();
+                    break;
+                case GameState.SpinStarted:
+                    IncreaseSpinCount();
+                    break;
+                case GameState.SpinEnded:
+                    CheckSpecialZone();
+                    break;
+                case GameState.RewardCollected:
+                case GameState.AllRewardsCollected:
+                    break;
+                case GameState.GameFailed:
+                    break;
+            }
         }
+    }
+
+    private void CheckSpecialZone()
+    {
+        if (spinCount % 5 == 0 && spinCount % 30 != 0)
+        {
+            ChangeZone(Zone.Gold);
+        }
+        else if (spinCount % 30 == 0)
+        {
+            ChangeZone(Zone.Silver);
+        }
+        else
+        {
+            ChangeZone(Zone.Bronze);
+        }
+    }
+
+    private void ChangeZone(Zone zone)
+    {
+        if (currentZone != zone)
+        {
+            currentZone = zone;
+            OnZoneChanged?.Invoke(zone);
+        }
+
     }
 }
