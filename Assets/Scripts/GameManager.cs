@@ -124,11 +124,11 @@ public class GameManager : MonoBehaviour
 
     private void CheckSpecialZone()
     {
-        if (spinCount % 5 == 0 && spinCount % 30 != 0)
+        if (spinCount % 30 == 0 && spinCount >= 30)
         {
             ChangeZone(Zone.Gold);
         }
-        else if (spinCount % 30 == 0)
+        else if (spinCount % 5 == 0)
         {
             ChangeZone(Zone.Silver);
         }
