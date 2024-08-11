@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 0
   amount: 1
   rewardName: Tier 3 SMG
-  image: {fileID: 21300000, guid: 7c01d8eb355eea14baf2eac7a5defb22, type: 3}
+  iconSprite: {fileID: 21300000, guid: 7c01d8eb355eea14baf2eac7a5defb22, type: 3}

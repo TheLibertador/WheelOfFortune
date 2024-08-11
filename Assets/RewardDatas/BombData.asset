@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 1
   amount: 1
   rewardName: Bomb
-  image: {fileID: 21300000, guid: 1cffa3a71a46e0440a0f1ba30df6910b, type: 3}
+  iconSprite: {fileID: 21300000, guid: 99d7dfe1231af914f93e6d8f2563e76d, type: 3}

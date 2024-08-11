@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 0
   amount: 1
   rewardName: Molotov
-  image: {fileID: 21300000, guid: 4d9b67a51dc64b64fba7e34e575506f6, type: 3}
+  iconSprite: {fileID: 21300000, guid: 4d9b67a51dc64b64fba7e34e575506f6, type: 3}

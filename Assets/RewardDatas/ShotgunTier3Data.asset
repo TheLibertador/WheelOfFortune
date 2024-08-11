@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 0
   amount: 1
   rewardName: Tier 3 Shotgun
-  image: {fileID: 21300000, guid: 1eb2e3dfdeae520479b86ee363386ca0, type: 3}
+  iconSprite: {fileID: 21300000, guid: 1eb2e3dfdeae520479b86ee363386ca0, type: 3}

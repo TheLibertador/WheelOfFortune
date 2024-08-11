@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 0
   amount: 100
   rewardName: Cash
-  image: {fileID: 21300000, guid: d1aa6a30484fa724ea87d817bcf3dfb3, type: 3}
+  iconSprite: {fileID: 21300000, guid: d1aa6a30484fa724ea87d817bcf3dfb3, type: 3}

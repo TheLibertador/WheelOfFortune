@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private WheelSpinCalculator wheelSpinCalculator;
     [SerializeField] private SlotManager slotManager;
+    [SerializeField] private RewardManager rewardManager;
   
 
     private int spinCount = 1;
@@ -20,9 +21,11 @@ public class GameManager : MonoBehaviour
         MainMenuActive,
         SpinStarted,
         SpinEnded,
-        RewardCollected,
-        AllRewardsCollected,
-        GameFailed
+        RewardsCollected,
+        RewardEarned,
+        BombExploded,
+        GameFailed,
+        GameWon,
     }
     public GameState currentState = GameState.MainMenuActive;
 
@@ -91,7 +94,12 @@ public class GameManager : MonoBehaviour
 
     public RewardDataSO GetCurrentRewardData()
     {
-        return slotManager.GetRewardData(GetCurrentReward());
+        return slotManager.GetRewardData(currentRewardIndex);
+    }
+
+    public  Dictionary<RewardDataSO,float> GetAllRewardData()
+    {
+        return rewardManager.GetEarnedRewards();
     }
 
     
@@ -105,7 +113,6 @@ public class GameManager : MonoBehaviour
             switch (state)
             {
                 case GameState.MainMenuActive:
-                    ResetSpinCount();
                     break;
                 case GameState.SpinStarted:
                     IncreaseSpinCount();
@@ -113,10 +120,13 @@ public class GameManager : MonoBehaviour
                 case GameState.SpinEnded:
                     CheckSpecialZone();
                     break;
-                case GameState.RewardCollected:
-                case GameState.AllRewardsCollected:
+                case GameState.RewardEarned:
                     break;
                 case GameState.GameFailed:
+                    ResetSpinCount();
+                    break;
+                case GameState.GameWon:
+                    ResetSpinCount();
                     break;
             }
         }

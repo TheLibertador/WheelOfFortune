@@ -8,5 +8,5 @@ public class RewardDataSO : ScriptableObject
     public bool isBomb;
     public int amount;
     public string rewardName;
-    public Sprite image;
+    public Sprite iconSprite;
 }

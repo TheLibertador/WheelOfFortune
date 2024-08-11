@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 0
   amount: 100
   rewardName: Gold
-  image: {fileID: 21300000, guid: f4f4e829c96651b4fba22a507ef35eef, type: 3}
+  iconSprite: {fileID: 21300000, guid: f4f4e829c96651b4fba22a507ef35eef, type: 3}
