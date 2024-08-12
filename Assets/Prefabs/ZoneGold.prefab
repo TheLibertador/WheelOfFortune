@@ -694,14 +694,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rewardDatas:
-  - {fileID: 11400000, guid: 2625f02038ef9cd4ca39b58d4b48243b, type: 2}
-  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
-  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
-  - {fileID: 11400000, guid: 2d6bf4946a3a82345b6bf3f6730e7999, type: 2}
-  - {fileID: 11400000, guid: c81e8af939f00d743a354dfcb12cf117, type: 2}
+  - {fileID: 11400000, guid: 194fddf59c53d124dbd9e88a66668cd3, type: 2}
   - {fileID: 11400000, guid: a83e2a83d294ec742b3659680e16cf03, type: 2}
+  - {fileID: 11400000, guid: 078189dd1bb4a6644bf54415f89d9d5e, type: 2}
+  - {fileID: 11400000, guid: 58e00461d1497944f89c5cdc4e85d5e0, type: 2}
+  - {fileID: 11400000, guid: 078189dd1bb4a6644bf54415f89d9d5e, type: 2}
+  - {fileID: 11400000, guid: a83e2a83d294ec742b3659680e16cf03, type: 2}
+  - {fileID: 11400000, guid: d21eeea44c88e454b86832eb40b70e91, type: 2}
   - {fileID: 11400000, guid: 23f94462dea95b6459cbe10ec49494a7, type: 2}
-  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
 --- !u!1 &1704920262848736160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,7 +1894,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4840761076537468005
 RectTransform:
   m_ObjectHideFlags: 0

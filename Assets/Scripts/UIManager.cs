@@ -93,7 +93,7 @@ public class UIManager : MonoBehaviour
         {
             silverZone.SetActive(true);
             bronzeZone.SetActive(false);
-            goldZone.SetActive(true);
+            goldZone.SetActive(false);
         }
     }
 
@@ -145,10 +145,8 @@ public class UIManager : MonoBehaviour
                 DisableRewardCollectionPanel();
                 DisableRewardEarnPanel();
                 break;
-            case GameManager.GameState.SpinStarted:
-                UpdateSpinCountText();
-                break;
             case GameManager.GameState.SpinEnded:
+                UpdateSpinCountText();
                 break;
             case GameManager.GameState.RewardsCollected:
                 FillRewardCollectScroll();

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RewardManager : MonoBehaviour
 {
-    [SerializeField] private SlotManager slotManager;
     private Dictionary<RewardDataSO, float> earnedRewards = new Dictionary<RewardDataSO, float>();
 
     private void OnEnable()
@@ -26,7 +25,7 @@ public class RewardManager : MonoBehaviour
         }
         else 
         {
-            GameManager.Instace.ChangeGameState(GameManager.GameState.RewardEarned);
+            
             if (earnedRewards.ContainsKey(rewardData))
             {
                 earnedRewards[rewardData] += rewardData.amount;
@@ -35,7 +34,7 @@ public class RewardManager : MonoBehaviour
             {
                 earnedRewards.Add(rewardData, rewardData.amount);
             }
-                
+            GameManager.Instace.ChangeGameState(GameManager.GameState.RewardEarned);
         }
     }
 
@@ -49,18 +48,6 @@ public class RewardManager : MonoBehaviour
         earnedRewards = new Dictionary<RewardDataSO, float>();
     }
 
-    private void ListRewards()
-    {
-
-        if (earnedRewards != null && earnedRewards.Count != 0)
-        {
-            foreach (var reward in earnedRewards)
-            {
-                Debug.Log($"Reward: {reward.Key.rewardName}, Amount: {reward.Value}");
-            }
-        }
-
-    }
 
     private void HandleGameStateChanged(GameManager.GameState newState)
     {
@@ -76,7 +63,6 @@ public class RewardManager : MonoBehaviour
             case GameManager.GameState.RewardsCollected:
                 break;
             case GameManager.GameState.RewardEarned:
-                ListRewards();
                 break;
             case GameManager.GameState.GameFailed:
                 ResetEarnedRewards();

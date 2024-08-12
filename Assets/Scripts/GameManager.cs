@@ -7,13 +7,14 @@ public class GameManager : MonoBehaviour
     public static GameManager Instace;
 
     [SerializeField] private WheelSpinCalculator wheelSpinCalculator;
-    [SerializeField] private SlotManager slotManager;
     [SerializeField] private RewardManager rewardManager;
   
 
     private int spinCount = 1;
     private int currentRewardIndex; 
     private float currentSpinRotation;
+
+    public RewardDataSO rewardData;
 
 
     public enum GameState
@@ -68,7 +69,8 @@ public class GameManager : MonoBehaviour
     {
         currentRewardIndex = wheelSpinCalculator.GenerateRandomRewardIndex();
         currentSpinRotation = wheelSpinCalculator.GenerateRandomRotationAngle();
-        ChangeGameState(GameState.SpinStarted);  
+        ChangeGameState(GameState.SpinStarted);
+        Debug.Log("Current reward index= " + currentRewardIndex);
     }
 
     private void IncreaseSpinCount()
@@ -94,7 +96,7 @@ public class GameManager : MonoBehaviour
 
     public RewardDataSO GetCurrentRewardData()
     {
-        return slotManager.GetRewardData(currentRewardIndex);
+        return rewardData;
     }
 
     public  Dictionary<RewardDataSO,float> GetAllRewardData()
@@ -118,9 +120,9 @@ public class GameManager : MonoBehaviour
                     IncreaseSpinCount();
                     break;
                 case GameState.SpinEnded:
-                    CheckSpecialZone();
                     break;
                 case GameState.RewardEarned:
+                    CheckSpecialZone();
                     break;
                 case GameState.GameFailed:
                     ResetSpinCount();

@@ -191,6 +191,9 @@ public class ButtonsManager : MonoBehaviour
             case GameManager.GameState.GameWon:
                 EnableSpinButton();
                 break;
+            case GameManager.GameState.GameFailed:
+                EnableSpinButton();
+                break;
         }
     }
 }

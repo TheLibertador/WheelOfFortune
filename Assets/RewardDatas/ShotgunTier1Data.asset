@@ -15,4 +15,4 @@ MonoBehaviour:
   isBomb: 0
   amount: 1
   rewardName: Shotgun
-  iconSprite: {fileID: -643112790, guid: 410de098f3dfc604288ceb4e39e165e8, type: 3}
+  iconSprite: {fileID: 21300000, guid: 410de098f3dfc604288ceb4e39e165e8, type: 3}

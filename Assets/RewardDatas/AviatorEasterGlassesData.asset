@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d22af9e5058fd5347b2f236828528539, type: 3}
-  m_Name: BombData
+  m_Name: AviatorEasterGlassesData
   m_EditorClassIdentifier: 
-  isBomb: 1
-  amount: 0
-  rewardName: 
-  iconSprite: {fileID: 21300000, guid: 1cffa3a71a46e0440a0f1ba30df6910b, type: 3}
+  isBomb: 0
+  amount: 1
+  rewardName: Aviator Easter Glasses
+  iconSprite: {fileID: 21300000, guid: 541a7366fbcb9804db92261f347ab700, type: 3}

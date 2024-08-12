@@ -1755,13 +1755,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rewardDatas:
   - {fileID: 11400000, guid: 2625f02038ef9cd4ca39b58d4b48243b, type: 2}
-  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
-  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
   - {fileID: 11400000, guid: 2d6bf4946a3a82345b6bf3f6730e7999, type: 2}
+  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
+  - {fileID: 11400000, guid: cad2ce55b8b389f40b5ea6a6343c823f, type: 2}
   - {fileID: 11400000, guid: c81e8af939f00d743a354dfcb12cf117, type: 2}
   - {fileID: 11400000, guid: a83e2a83d294ec742b3659680e16cf03, type: 2}
   - {fileID: 11400000, guid: 23f94462dea95b6459cbe10ec49494a7, type: 2}
-  - {fileID: 11400000, guid: 8e77df459ab4d3743baa7e14cb21b171, type: 2}
+  - {fileID: 11400000, guid: feab54e1943d75b459b0a85af08db3ec, type: 2}
 --- !u!1 &7627452014850056299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,7 +1907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7627452016222608670
 RectTransform:
   m_ObjectHideFlags: 0
