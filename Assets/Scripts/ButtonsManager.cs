@@ -5,62 +5,62 @@ using UnityEngine.UI;
 
 public class ButtonsManager : MonoBehaviour
 {
-    [SerializeField] private Button spinButton;
-    [SerializeField] private Button silverSpinButton;
-    [SerializeField] private Button goldSpinButton;
-    [SerializeField] private Button claimButton;
-    [SerializeField] private Button reviveButton;
-    [SerializeField] private Button loseButton;
-    [SerializeField] private Button continueButton;
-    [SerializeField] private Button rewardEarnedClaimButton;
-    [SerializeField] private Button playAgainButton;
+    [SerializeField] private Button _spinButton;
+    [SerializeField] private Button _silverSpinButton;
+    [SerializeField] private Button _goldSpinButton;
+    [SerializeField] private Button _claimButton;
+    [SerializeField] private Button _reviveButton;
+    [SerializeField] private Button _loseButton;
+    [SerializeField] private Button _continueButton;
+    [SerializeField] private Button _rewardEarnedClaimButton;
+    [SerializeField] private Button _playAgainButton;
 
 
     private void OnValidate()
     {
-        if (spinButton == null)
+        if (_spinButton == null)
         {
-            spinButton = FindButtonByName("SpinButton");
+            _spinButton = FindButtonByName("SpinButton");
         }
 
-        if (silverSpinButton == null)
+        if (_silverSpinButton == null)
         {
-            silverSpinButton = FindButtonByName("SilverSpinButton");
+            _silverSpinButton = FindButtonByName("SilverSpinButton");
         }
 
-        if (goldSpinButton == null)
+        if (_goldSpinButton == null)
         {
-            goldSpinButton = FindButtonByName("GoldSpinButton");
+            _goldSpinButton = FindButtonByName("GoldSpinButton");
         }
 
-        if (claimButton == null)
+        if (_claimButton == null)
         {
-            claimButton = FindButtonByName("ClaimButton");
+            _claimButton = FindButtonByName("ClaimButton");
         }
 
-        if (reviveButton == null)
+        if (_reviveButton == null)
         {
-            reviveButton = FindButtonByName("ReviveButton");
+            _reviveButton = FindButtonByName("ReviveButton");
         }
 
-        if (loseButton == null)
+        if (_loseButton == null)
         {
-            loseButton = FindButtonByName("LoseButton");
+            _loseButton = FindButtonByName("LoseButton");
         }
 
-        if (continueButton == null)
+        if (_continueButton == null)
         {
-            continueButton = FindButtonByName("ContinueButton");
+            _continueButton = FindButtonByName("ContinueButton");
         }
 
-        if (rewardEarnedClaimButton == null)
+        if (_rewardEarnedClaimButton == null)
         {
-            rewardEarnedClaimButton = FindButtonByName("RewardEarnedClaimButton");
+            _rewardEarnedClaimButton = FindButtonByName("RewardEarnedClaimButton");
         }
 
-        if (playAgainButton == null)
+        if (_playAgainButton == null)
         {
-            playAgainButton = FindButtonByName("PlayAgainButton");
+            _playAgainButton = FindButtonByName("PlayAgainButton");
         }
 
     }
@@ -77,41 +77,41 @@ public class ButtonsManager : MonoBehaviour
 
     private void Start()
     {
-        if (spinButton != null)
+        if (_spinButton != null)
         {
-            spinButton.onClick.AddListener(OnSpinButtonClicked);
+            _spinButton.onClick.AddListener(OnSpinButtonClicked);
         }
-        if (silverSpinButton != null)
+        if (_silverSpinButton != null)
         {
-            silverSpinButton.onClick.AddListener(OnSpinButtonClicked);
+            _silverSpinButton.onClick.AddListener(OnSpinButtonClicked);
         }
-        if (goldSpinButton != null)
+        if (_goldSpinButton != null)
         {
-            goldSpinButton.onClick.AddListener(OnSpinButtonClicked);
+            _goldSpinButton.onClick.AddListener(OnSpinButtonClicked);
         }
-        if (claimButton != null)
+        if (_claimButton != null)
         {
-            claimButton.onClick.AddListener(OnClaimButtonClicked);
+            _claimButton.onClick.AddListener(OnClaimButtonClicked);
         }
-        if (reviveButton != null)
+        if (_reviveButton != null)
         {
-            reviveButton.onClick.AddListener(OnReviveButtonClicked);
+            _reviveButton.onClick.AddListener(OnReviveButtonClicked);
         }
-        if (loseButton != null)
+        if (_loseButton != null)
         {
-            loseButton.onClick.AddListener(OnLoseButtonClicked);
+            _loseButton.onClick.AddListener(OnLoseButtonClicked);
         }
-        if (continueButton != null)
+        if (_continueButton != null)
         {
-            continueButton.onClick.AddListener(OnContinueButtonClicked);
+            _continueButton.onClick.AddListener(OnContinueButtonClicked);
         }
-        if (rewardEarnedClaimButton != null)
+        if (_rewardEarnedClaimButton != null)
         {
-            rewardEarnedClaimButton.onClick.AddListener(OnRewardEarnedClaimButtonClicked);
+            _rewardEarnedClaimButton.onClick.AddListener(OnRewardEarnedClaimButtonClicked);
         }
-        if (playAgainButton != null)
+        if (_playAgainButton != null)
         {
-            playAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
+            _playAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         }
     }
 
@@ -166,16 +166,16 @@ public class ButtonsManager : MonoBehaviour
 
     private void DisableSpinButton()
     {
-        spinButton.interactable = false;
-        silverSpinButton.interactable = false;
-        goldSpinButton.interactable = false;
+        _spinButton.interactable = false;
+        _silverSpinButton.interactable = false;
+        _goldSpinButton.interactable = false;
     }
 
     private void EnableSpinButton()
     {
-        spinButton.interactable = true;
-        silverSpinButton.interactable = true;
-        goldSpinButton.interactable = true;
+        _spinButton.interactable = true;
+        _silverSpinButton.interactable = true;
+        _goldSpinButton.interactable = true;
     }
 
     private void HandleGameStateChanged(GameManager.GameState newState)

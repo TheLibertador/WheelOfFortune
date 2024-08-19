@@ -6,15 +6,15 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instace;
 
-    [SerializeField] private WheelSpinCalculator wheelSpinCalculator;
-    [SerializeField] private RewardManager rewardManager;
+    [SerializeField] private WheelSpinCalculator _wheelSpinCalculator;
+    [SerializeField] private RewardManager _rewardManager;
   
 
-    private int spinCount = 1;
-    private int currentRewardIndex; 
-    private float currentSpinRotation;
+    private int _spinIndex = 1;
+    private int _currentRewardIndex; 
+    private float _currentSpinRotation;
 
-    public RewardDataSO rewardData;
+    [HideInInspector] public RewardDataSO rewardData;
 
 
     public enum GameState
@@ -62,36 +62,35 @@ public class GameManager : MonoBehaviour
 
     public float GetWheelRotation()
     {
-        return currentSpinRotation;
+        return _currentSpinRotation;
     }
 
     public void SpinWheel()
     {
-        currentRewardIndex = wheelSpinCalculator.GenerateRandomRewardIndex();
-        currentSpinRotation = wheelSpinCalculator.GenerateRandomRotationAngle();
+        _currentRewardIndex = _wheelSpinCalculator.GenerateRandomRewardIndex();
+        _currentSpinRotation = _wheelSpinCalculator.GenerateRandomRotationAngle();
         ChangeGameState(GameState.SpinStarted);
-        Debug.Log("Current reward index= " + currentRewardIndex);
     }
 
     private void IncreaseSpinCount()
     {
-        spinCount++;
+        _spinIndex++;
     }
 
     private void ResetSpinCount()
     {
-        spinCount = 1;
+        _spinIndex = 1;
     }
 
     public int GetSpinCount()
     {
-        return spinCount;
+        return _spinIndex;
     }
 
 
     public int GetCurrentReward()
     {
-        return currentRewardIndex;
+        return _currentRewardIndex;
     }
 
     public RewardDataSO GetCurrentRewardData()
@@ -101,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     public  Dictionary<RewardDataSO,float> GetAllRewardData()
     {
-        return rewardManager.GetEarnedRewards();
+        return _rewardManager.GetEarnedRewards();
     }
 
     
@@ -136,11 +135,11 @@ public class GameManager : MonoBehaviour
 
     private void CheckSpecialZone()
     {
-        if (spinCount % 30 == 0 && spinCount >= 30)
+        if (_spinIndex % 30 == 0 && _spinIndex >= 30)
         {
             ChangeZone(Zone.Gold);
         }
-        else if (spinCount % 5 == 0)
+        else if (_spinIndex % 5 == 0)
         {
             ChangeZone(Zone.Silver);
         }

@@ -5,8 +5,8 @@ using DG.Tweening;
 
 public class WheelRotateHandler : MonoBehaviour
 {
-    RectTransform rectTransform;
-    [SerializeField] private float duration = 5f;
+    RectTransform _rectTransform;
+    [SerializeField] private float _duration = 5f;
 
     private void OnEnable()
     {
@@ -25,11 +25,11 @@ public class WheelRotateHandler : MonoBehaviour
 
     private void GetRectTransform()
     {
-        rectTransform = gameObject.GetComponent<RectTransform>();
+        _rectTransform = gameObject.GetComponent<RectTransform>();
     }
     public void RotateWheel(float rotationValue)
     {
-        rectTransform.DORotate(new Vector3(0, 0, rotationValue), duration, RotateMode.FastBeyond360)
+        _rectTransform.DORotate(new Vector3(0, 0, rotationValue), _duration, RotateMode.FastBeyond360)
             .SetEase(Ease.OutQuad)
             .OnComplete(HandleOnComplete);
     }

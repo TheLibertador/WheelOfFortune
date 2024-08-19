@@ -4248,18 +4248,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c06d0be5823e442af2177c02bd2fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameFailPanel: {fileID: 2128638341}
-  rewardEarnPanel: {fileID: 1892487722}
-  rewardCollectionPanel: {fileID: 1773312458}
-  bronzeZone: {fileID: 732301935}
-  silverZone: {fileID: 6090205349425552210}
-  goldZone: {fileID: 6090205348070728487}
-  spinCount: {fileID: 286104956}
-  rewardCardItemNameText: {fileID: 1753320234}
-  rewardCardItemAmountText: {fileID: 130757347}
-  rewardCardItemIcon: {fileID: 1105686877}
-  rewardCollectCardsHolder: {fileID: 1414564531}
-  rewardCollectCardPrefab: {fileID: 5558553916683207179, guid: 3d1429b8b2825fd4dac9509b689001c7, type: 3}
+  _gameFailPanel: {fileID: 2128638341}
+  _rewardEarnPanel: {fileID: 1892487722}
+  _rewardCollectionPanel: {fileID: 1773312458}
+  _bronzeZone: {fileID: 732301935}
+  _silverZone: {fileID: 6090205349425552210}
+  _goldZone: {fileID: 6090205348070728487}
+  _spinCount: {fileID: 286104956}
+  _rewardCardItemNameText: {fileID: 1753320234}
+  _rewardCardItemAmountText: {fileID: 130757347}
+  _rewardCardItemIcon: {fileID: 1105686877}
+  _rewardCollectCardsHolder: {fileID: 1414564531}
+  _rewardCollectCardPrefab: {fileID: 5558553916683207179, guid: 3d1429b8b2825fd4dac9509b689001c7, type: 3}
 --- !u!1 &969736376
 GameObject:
   m_ObjectHideFlags: 0
@@ -6361,9 +6361,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ba36de291f3134183a51e58471bca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelSpinCalculator: {fileID: 2093154038}
-  slotManager: {fileID: 1980342720}
-  rewardManager: {fileID: 1553354872}
+  _wheelSpinCalculator: {fileID: 2093154038}
+  _rewardManager: {fileID: 1553354872}
+  rewardData: {fileID: 0}
   currentState: 0
   currentZone: 0
 --- !u!4 &1585137231
@@ -6410,15 +6410,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6af7b38b1eeca7479cb7275556ee07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinButton: {fileID: 676143164}
-  silverSpinButton: {fileID: 6090205349436633345}
-  goldSpinButton: {fileID: 6090205348107094388}
-  claimButton: {fileID: 467885184}
-  reviveButton: {fileID: 1733116388}
-  loseButton: {fileID: 2131959988}
-  continueButton: {fileID: 907246593}
-  rewardEarnedClaimButton: {fileID: 1278710511}
-  playAgainButton: {fileID: 1640585825}
+  _spinButton: {fileID: 676143164}
+  _silverSpinButton: {fileID: 6090205349436633345}
+  _goldSpinButton: {fileID: 6090205348107094388}
+  _claimButton: {fileID: 467885184}
+  _reviveButton: {fileID: 1733116388}
+  _loseButton: {fileID: 2131959988}
+  _continueButton: {fileID: 907246593}
+  _rewardEarnedClaimButton: {fileID: 1278710511}
+  _playAgainButton: {fileID: 1640585825}
 --- !u!4 &1588735978
 Transform:
   m_ObjectHideFlags: 0
@@ -8072,7 +8072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca688edab4b484a9c948769bef2e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  _duration: 5
 --- !u!1 &1937896993
 GameObject:
   m_ObjectHideFlags: 0
@@ -9456,7 +9456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca688edab4b484a9c948769bef2e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  _duration: 5
 --- !u!224 &6090205347927045175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10669,7 +10669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bca688edab4b484a9c948769bef2e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 3
+  _duration: 5
 --- !u!222 &6090205349347632274
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class WheelSpinCalculator : MonoBehaviour
 {
-    private int rewardNum = 8;
-    private float rewardAnglePerReward = 45f;
+    private int _rewardNum = 8;
+    private float _rewardAnglePerReward = 45f;
 
-    private int currentRewardIndex;
-    private float currentRotationAngle;
+    private int _currentRewardIndex;
+    private float _currentRotationAngle;
 
 
-    private int minSpinCount = 3;
-    private int maxSpinCount = 5;
+    private int _minSpinCount = 3;
+    private int _maxSpinCount = 5;
     
     public int GenerateRandomRewardIndex()
     {
-        currentRewardIndex = Random.Range(0, rewardNum);
-        return currentRewardIndex;
+        _currentRewardIndex = Random.Range(0, _rewardNum);
+        return _currentRewardIndex;
     }
 
     public int GetCurrentRewardIndex()
     {
-        return currentRewardIndex;
+        return _currentRewardIndex;
     }
 
     public float GenerateRandomRotationAngle()
     {
-        int randomSpinCount = Random.Range(minSpinCount, maxSpinCount + 1);
-        float rewardAngle = currentRewardIndex * rewardAnglePerReward;
-        currentRotationAngle = (randomSpinCount * 360) + rewardAngle;
-        return currentRotationAngle;
+        int randomSpinCount = Random.Range(_minSpinCount, _maxSpinCount + 1);
+        float rewardAngle = _currentRewardIndex * _rewardAnglePerReward;
+        _currentRotationAngle = (randomSpinCount * 360) + rewardAngle;
+        return _currentRotationAngle;
     }
 
 }

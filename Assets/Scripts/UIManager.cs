@@ -4,23 +4,23 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private GameObject gameFailPanel;
-    [SerializeField] private GameObject rewardEarnPanel;
-    [SerializeField] private GameObject rewardCollectionPanel;
+    [SerializeField] private GameObject _gameFailPanel;
+    [SerializeField] private GameObject _rewardEarnPanel;
+    [SerializeField] private GameObject _rewardCollectionPanel;
 
-    [SerializeField] private GameObject bronzeZone;
-    [SerializeField] private GameObject silverZone;
-    [SerializeField] private GameObject goldZone;
+    [SerializeField] private GameObject _bronzeZone;
+    [SerializeField] private GameObject _silverZone;
+    [SerializeField] private GameObject _goldZone;
 
-    [SerializeField] private TextMeshProUGUI spinCount;
+    [SerializeField] private TextMeshProUGUI _spinCount;
 
 
-    [SerializeField] private TextMeshProUGUI rewardCardItemNameText;
-    [SerializeField] private TextMeshProUGUI rewardCardItemAmountText;
-    [SerializeField] private Image rewardCardItemIcon;
+    [SerializeField] private TextMeshProUGUI _rewardCardItemNameText;
+    [SerializeField] private TextMeshProUGUI _rewardCardItemAmountText;
+    [SerializeField] private Image _rewardCardItemIcon;
 
-    [SerializeField] private Transform rewardCollectCardsHolder;
-    [SerializeField] private GameObject rewardCollectCardPrefab;
+    [SerializeField] private Transform _rewardCollectCardsHolder;
+    [SerializeField] private GameObject _rewardCollectCardPrefab;
     
 
 
@@ -38,72 +38,72 @@ public class UIManager : MonoBehaviour
 
     private void EnableGameFailPanel()
     {
-        gameFailPanel.SetActive(true);
+        _gameFailPanel.SetActive(true);
     }
 
     private void DisableGameFailPanel()
     {
-        gameFailPanel.SetActive(false);
+        _gameFailPanel.SetActive(false);
     }
 
     private void EnableRewardEarnPanel()
     {
-        rewardEarnPanel.SetActive(true);
+        _rewardEarnPanel.SetActive(true);
     }
 
     private void DisableRewardEarnPanel()
     {
-        rewardEarnPanel.SetActive(false);
+        _rewardEarnPanel.SetActive(false);
     }
 
     private void EnableRewardCollectionPanel()
     {
-        rewardCollectionPanel.SetActive(true);
+        _rewardCollectionPanel.SetActive(true);
     }
 
     private void DisableRewardCollectionPanel()
     {
-        rewardCollectionPanel.SetActive(false);
+        _rewardCollectionPanel.SetActive(false);
     }
 
 
     private void UpdateSpinCountText()
     {
-        spinCount.text = GameManager.Instace.GetSpinCount().ToString();
+        _spinCount.text = GameManager.Instace.GetSpinCount().ToString();
     }
 
     private void ResetSpinCountText()
     {
-        spinCount.text = "1";
+        _spinCount.text = "1";
     }
 
     private void ActivateBronzeZone()
     {
-        if(!bronzeZone.activeInHierarchy)
+        if(!_bronzeZone.activeInHierarchy)
         {
-            bronzeZone.SetActive(true);
-            silverZone.SetActive(false);
-            goldZone.SetActive(false);
+            _bronzeZone.SetActive(true);
+            _silverZone.SetActive(false);
+            _goldZone.SetActive(false);
         }
     }
 
     private void ActivateSilverZone()
     {
-        if (!silverZone.activeInHierarchy)
+        if (!_silverZone.activeInHierarchy)
         {
-            silverZone.SetActive(true);
-            bronzeZone.SetActive(false);
-            goldZone.SetActive(false);
+            _silverZone.SetActive(true);
+            _bronzeZone.SetActive(false);
+            _goldZone.SetActive(false);
         }
     }
 
     private void ActivateGoldZone()
     {
-        if (!goldZone.activeInHierarchy)
+        if (!_goldZone.activeInHierarchy)
         {
-            goldZone.SetActive(true);
-            silverZone.SetActive(false);
-            bronzeZone.SetActive(false);
+            _goldZone.SetActive(true);
+            _silverZone.SetActive(false);
+            _bronzeZone.SetActive(false);
         }
     }
 
@@ -111,9 +111,9 @@ public class UIManager : MonoBehaviour
     private void FillRewardCardData()
     {
         var currentReward = GameManager.Instace.GetCurrentRewardData();
-        rewardCardItemNameText.text = currentReward.rewardName;
-        rewardCardItemAmountText.text = currentReward.amount.ToString();
-        rewardCardItemIcon.sprite = currentReward.iconSprite;
+        _rewardCardItemNameText.text = currentReward.rewardName;
+        _rewardCardItemAmountText.text = currentReward.amount.ToString();
+        _rewardCardItemIcon.sprite = currentReward.iconSprite;
     }
 
     private void FillRewardCollectScroll()
@@ -124,7 +124,7 @@ public class UIManager : MonoBehaviour
         
             foreach (var reward in rewardDataDictionary)
             {
-                GameObject card = Instantiate(rewardCollectCardPrefab, rewardCollectCardsHolder);
+                GameObject card = Instantiate(_rewardCollectCardPrefab, _rewardCollectCardsHolder);
                 Transform rewardNameText = card.transform.Find("RewardNameText");
                 rewardNameText.GetComponent<TextMeshProUGUI>().text = reward.Key.rewardName;
                 Transform rewardAmountText = card.transform.Find("RewardAmountText");
