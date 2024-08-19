@@ -15,9 +15,12 @@ public class ButtonsManager : MonoBehaviour
     [SerializeField] private Button _rewardEarnedClaimButton;
     [SerializeField] private Button _playAgainButton;
 
+    private List<Button> _buttonsOnScene = new List<Button>();
+
 
     private void OnValidate()
     {
+        GetButtonsOnScene();
         if (_spinButton == null)
         {
             _spinButton = FindButtonByName("SpinButton");
@@ -114,11 +117,18 @@ public class ButtonsManager : MonoBehaviour
             _playAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         }
     }
-
-    private Button FindButtonByName(string buttonName)
+    private void GetButtonsOnScene()
     {
         Button[] buttons = FindObjectsOfType<Button>();
         foreach (Button button in buttons)
+        {
+            _buttonsOnScene.Add(button);
+        }
+
+    }
+    private Button FindButtonByName(string buttonName)
+    {
+        foreach (Button button in _buttonsOnScene)
         {
             if (button.gameObject.name == buttonName)
             {
