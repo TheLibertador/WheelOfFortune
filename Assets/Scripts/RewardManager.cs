@@ -18,24 +18,16 @@ public class RewardManager : MonoBehaviour
 
     public void SaveCurrentReward(RewardDataSO rewardData)
     {
-        if (rewardData.isBomb)
+        if (earnedRewards.ContainsKey(rewardData))
         {
-            GameManager.Instace.ChangeGameState(GameManager.GameState.BombExploded);
-            return;
+            earnedRewards[rewardData] += rewardData.amount;
         }
-        else 
+        else
         {
-            
-            if (earnedRewards.ContainsKey(rewardData))
-            {
-                earnedRewards[rewardData] += rewardData.amount;
-            }
-            else
-            {
-                earnedRewards.Add(rewardData, rewardData.amount);
-            }
-            GameManager.Instace.ChangeGameState(GameManager.GameState.RewardEarned);
+            earnedRewards.Add(rewardData, rewardData.amount);
         }
+        GameManager.Instace.ChangeGameState(GameManager.GameState.RewardEarned);
+     
     }
 
     public Dictionary<RewardDataSO, float> GetEarnedRewards()
@@ -53,16 +45,8 @@ public class RewardManager : MonoBehaviour
     {
         switch (newState)
         {
-            case GameManager.GameState.MainMenuActive:
-                break;
-            case GameManager.GameState.SpinStarted:
-                break;
-            case GameManager.GameState.SpinEnded:
+            case GameManager.GameState.RewardsChecked:
                 SaveCurrentReward(GameManager.Instace.GetCurrentRewardData());
-                break;
-            case GameManager.GameState.RewardsCollected:
-                break;
-            case GameManager.GameState.RewardEarned:
                 break;
             case GameManager.GameState.GameFailed:
                 ResetEarnedRewards();

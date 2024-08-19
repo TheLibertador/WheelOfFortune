@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
         MainMenuActive,
         SpinStarted,
         SpinEnded,
+        RewardsChecked,
         RewardsCollected,
         RewardEarned,
         BombExploded,
