@@ -6448,6 +6448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wheelSpinCalculator: {fileID: 2093154038}
   _rewardManager: {fileID: 1553354872}
+  zoneIndex: {fileID: 11400000, guid: 2d72c248b326dc245b19e55fa16af96c, type: 2}
   rewardData: {fileID: 0}
   currentState: 0
   currentZone: 0

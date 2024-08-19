@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private WheelSpinCalculator _wheelSpinCalculator;
     [SerializeField] private RewardManager _rewardManager;
+
+    [SerializeField] SpecialZoneIndexDataSO zoneIndex;
   
 
     private int _spinIndex = 1;
@@ -15,6 +17,7 @@ public class GameManager : MonoBehaviour
     private float _currentSpinRotation;
 
     [HideInInspector] public RewardDataSO rewardData;
+
 
 
     public enum GameState
@@ -136,11 +139,11 @@ public class GameManager : MonoBehaviour
 
     private void CheckSpecialZone()
     {
-        if (_spinIndex % 30 == 0 && _spinIndex >= 30)
+        if (_spinIndex % zoneIndex._goldZoneIndex == 0 && _spinIndex >= 30)
         {
             ChangeZone(Zone.Gold);
         }
-        else if (_spinIndex % 5 == 0)
+        else if (_spinIndex % zoneIndex._silverZoneIndex == 0)
         {
             ChangeZone(Zone.Silver);
         }
