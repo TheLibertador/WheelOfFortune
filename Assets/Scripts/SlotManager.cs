@@ -7,12 +7,29 @@ using System;
 
 public class SlotManager : MonoBehaviour
 {
-    private Transform[] slots = new Transform[8];
+    private List<Transform> slots = new List<Transform>();
     [SerializeField] private RewardDataSO[] rewardDatas = new RewardDataSO[8];
 
     private void OnEnable()
     {
         GameManager.OnGameStateChanged += HandleGameStateChanged;
+    }
+
+    private void OnValidate()
+    {
+        InitializeSlots();
+        if (slots.Count != rewardDatas.Length)
+        {
+            Array.Resize(ref rewardDatas, slots.Count);
+        }
+
+        for (int i = 0; i < rewardDatas.Length; i++)
+        {
+            if (rewardDatas[i] == null)
+            {
+                Debug.LogError($"Reward data at index {i} is not assigned in the SlotManager attached to {gameObject.name}.");
+            }
+        }
     }
 
     private void OnDisable()
@@ -22,18 +39,20 @@ public class SlotManager : MonoBehaviour
 
     void Start()
     {
-        InitializeSlots();
-
         if(slots != null)
         {
             MatchSlotData();
+        }
+        else
+        {
+            Debug.LogError("Slots are null cannot initialize the rewards");
         }
        
     }
  
     private void MatchSlotData()
     {
-        for(int index = 0; index < slots.Length; index++)
+        for(int index = 0; index < slots.Count; index++)
         {
             slots[index].GetComponent<Image>().sprite = rewardDatas[index].iconSprite;
             if (!rewardDatas[index].isBomb)
@@ -46,16 +65,15 @@ public class SlotManager : MonoBehaviour
 
     private void InitializeSlots()
     {
-        var allChildren = transform.GetComponentsInChildren<Transform>();
-        int slotIndex = 0;
-        foreach (Transform child in allChildren)
+        slots.Clear();
+        foreach (Transform child in transform)
         {
-            if (child.GetComponent<Image>() && slotIndex < slots.Length)
+            if (child.GetComponent<Image>())
             {
-                slots[slotIndex] = child;
-                slotIndex++;
+                slots.Add(child);
             }
         }
+        
     }
 
     public void SetRewardData(int rewardIndex)
