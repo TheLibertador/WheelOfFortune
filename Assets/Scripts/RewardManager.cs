@@ -76,9 +76,7 @@ public class RewardManager : MonoBehaviour
                 ResetEarnedRewards();
                 break;
             case GameManager.GameState.GameWon:
-                Debug.Log($"Game won list size is {rewards.Count}");
                 ResetEarnedRewards();
-                Debug.Log($"Game resetted list size is {rewards.Count}");
                 break;
         }
     }
