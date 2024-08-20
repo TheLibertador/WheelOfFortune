@@ -30,6 +30,14 @@ public class SlotManager : MonoBehaviour
                 Debug.LogError($"Reward data at index {i} is not assigned in the SlotManager attached to {gameObject.name}.");
             }
         }
+        if (slots != null)
+        {
+            MatchSlotData();
+        }
+        else
+        {
+            Debug.LogError("Slots are null cannot initialize the rewards");
+        }
     }
 
     private void OnDisable()
@@ -39,14 +47,7 @@ public class SlotManager : MonoBehaviour
 
     void Start()
     {
-        if(slots != null)
-        {
-            MatchSlotData();
-        }
-        else
-        {
-            Debug.LogError("Slots are null cannot initialize the rewards");
-        }
+       
        
     }
  
