@@ -2,9 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public class Reward
+{
+    public float amount;
+    public string rewardName;
+    public Sprite icon;
+
+    public Reward(float amount, string rewardName, Sprite icon)
+    {
+        this.amount = amount;
+        this.rewardName = rewardName;
+        this.icon = icon;
+    }
+}
 public class RewardManager : MonoBehaviour
 {
-    private Dictionary<RewardDataSO, float> earnedRewards = new Dictionary<RewardDataSO, float>();
+    private List<Reward> rewards = new List<Reward>();
 
     private void OnEnable()
     {
@@ -18,26 +31,37 @@ public class RewardManager : MonoBehaviour
 
     public void SaveCurrentReward(RewardDataSO rewardData)
     {
-        if (earnedRewards.ContainsKey(rewardData))
+        int rewardIndex = 0;
+        bool rewardFound = false;
+        foreach(var reward in rewards)
         {
-            earnedRewards[rewardData] += rewardData.amount;
+            if(reward.rewardName == rewardData.rewardName)
+            {
+                rewardFound = true;
+                break;
+            }
+            rewardIndex++;
+        }
+        if (rewardFound)
+        {
+            rewards[rewardIndex].amount += rewardData.amount;
         }
         else
         {
-            earnedRewards.Add(rewardData, rewardData.amount);
+           var rewardStruct = new Reward(rewardData.amount, rewardData.rewardName, rewardData.iconSprite);
+           rewards.Add(rewardStruct);
         }
         GameManager.Instace.ChangeGameState(GameManager.GameState.RewardEarned);
-     
     }
 
-    public Dictionary<RewardDataSO, float> GetEarnedRewards()
+    public List<Reward> GetEarnedRewards()
     {
-        return earnedRewards;
+        return rewards;
     }
 
     private void ResetEarnedRewards()
     {
-        earnedRewards = new Dictionary<RewardDataSO, float>();
+        rewards = new List<Reward>();
     }
 
 
@@ -52,7 +76,9 @@ public class RewardManager : MonoBehaviour
                 ResetEarnedRewards();
                 break;
             case GameManager.GameState.GameWon:
+                Debug.Log($"Game won list size is {rewards.Count}");
                 ResetEarnedRewards();
+                Debug.Log($"Game resetted list size is {rewards.Count}");
                 break;
         }
     }

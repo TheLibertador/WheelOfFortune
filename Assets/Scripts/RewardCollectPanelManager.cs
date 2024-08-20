@@ -41,11 +41,11 @@ public class RewardCollectPanelManager : MonoBehaviour
             {
                 GameObject card = Instantiate(_rewardCollectCardPrefab, _rewardCollectCardsHolder);
                 Transform rewardNameText = card.transform.Find("RewardNameText");
-                rewardNameText.GetComponent<TextMeshProUGUI>().text = reward.Key.rewardName;
+                rewardNameText.GetComponent<TextMeshProUGUI>().text = reward.rewardName;
                 Transform rewardAmountText = card.transform.Find("RewardAmountText");
-                rewardAmountText.GetComponent<TextMeshProUGUI>().text = reward.Value.ToString();
+                rewardAmountText.GetComponent<TextMeshProUGUI>().text = reward.amount.ToString();
                 Transform rewardIcon = card.transform.Find("RewardIcon");
-                rewardIcon.GetComponent<Image>().sprite = reward.Key.iconSprite;
+                rewardIcon.GetComponent<Image>().sprite = reward.icon;
             }
 
         }
@@ -72,8 +72,4 @@ public class RewardCollectPanelManager : MonoBehaviour
                 break;
         }
     }
-
-
-
-
 }
