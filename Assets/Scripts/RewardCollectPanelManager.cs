@@ -11,6 +11,7 @@ public class RewardCollectPanelManager : MonoBehaviour
     [SerializeField] private Transform _rewardCollectCardsHolder;
     [SerializeField] private GameObject _rewardCollectCardPrefab;
 
+    private List<Transform> instantiatedCards = new List<Transform>();
     private void OnEnable()
     {
         GameManager.OnGameStateChanged += HandleGameStateChanged;
@@ -40,16 +41,28 @@ public class RewardCollectPanelManager : MonoBehaviour
             foreach (var reward in rewardDataDictionary)
             {
                 GameObject card = Instantiate(_rewardCollectCardPrefab, _rewardCollectCardsHolder);
+                instantiatedCards.Add(card.transform);
+
                 Transform rewardNameText = card.transform.Find("RewardNameText");
                 rewardNameText.GetComponent<TextMeshProUGUI>().text = reward.rewardName;
+
                 Transform rewardAmountText = card.transform.Find("RewardAmountText");
                 rewardAmountText.GetComponent<TextMeshProUGUI>().text = reward.amount.ToString();
+
                 Transform rewardIcon = card.transform.Find("RewardIcon");
                 rewardIcon.GetComponent<Image>().sprite = reward.icon;
             }
 
         }
 
+    }
+
+    private void ResetRewardCards()
+    {
+        for(int index = 0; index < instantiatedCards.Count; index++)
+        {
+            Destroy(instantiatedCards[index].gameObject);
+        }
     }
 
     private void HandleGameStateChanged(GameManager.GameState newState)
@@ -68,6 +81,11 @@ public class RewardCollectPanelManager : MonoBehaviour
             case GameManager.GameState.BombExploded:
                 break;
             case GameManager.GameState.GameWon:
+                ResetRewardCards();
+                DisableRewardCollectionPanel();
+                break;
+            case GameManager.GameState.GameFailed:
+                ResetRewardCards();
                 DisableRewardCollectionPanel();
                 break;
         }

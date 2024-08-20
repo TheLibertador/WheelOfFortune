@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
         return rewardData;
     }
 
-    public  Dictionary<RewardDataSO,float> GetAllRewardData()
+    public  List<Reward> GetAllRewardData()
     {
         return _rewardManager.GetEarnedRewards();
     }
@@ -129,9 +129,11 @@ public class GameManager : MonoBehaviour
                     break;
                 case GameState.GameFailed:
                     ResetSpinCount();
+                    ChangeZone(Zone.Bronze);
                     break;
                 case GameState.GameWon:
                     ResetSpinCount();
+                    ChangeZone(Zone.Bronze);
                     break;
             }
         }
