@@ -76,6 +76,43 @@ public class ButtonsManager : MonoBehaviour
     private void OnDisable()
     {
         GameManager.OnGameStateChanged -= HandleGameStateChanged;
+
+        if (_spinButton != null)
+        {
+            _spinButton.onClick.RemoveListener(OnSpinButtonClicked);
+        }
+        if (_silverSpinButton != null)
+        {
+            _silverSpinButton.onClick.RemoveListener(OnSpinButtonClicked);
+        }
+        if (_goldSpinButton != null)
+        {
+            _goldSpinButton.onClick.RemoveListener(OnSpinButtonClicked);
+        }
+        if (_claimButton != null)
+        {
+            _claimButton.onClick.RemoveListener(OnClaimButtonClicked);
+        }
+        if (_reviveButton != null)
+        {
+            _reviveButton.onClick.RemoveListener(OnReviveButtonClicked);
+        }
+        if (_loseButton != null)
+        {
+            _loseButton.onClick.RemoveListener(OnLoseButtonClicked);
+        }
+        if (_continueButton != null)
+        {
+            _continueButton.onClick.RemoveListener(OnContinueButtonClicked);
+        }
+        if (_rewardEarnedClaimButton != null)
+        {
+            _rewardEarnedClaimButton.onClick.RemoveListener(OnRewardEarnedClaimButtonClicked);
+        }
+        if (_playAgainButton != null)
+        {
+            _playAgainButton.onClick.RemoveListener(OnPlayAgainButtonClicked);
+        }
     }
 
     private void Start()
@@ -117,6 +154,8 @@ public class ButtonsManager : MonoBehaviour
             _playAgainButton.onClick.AddListener(OnPlayAgainButtonClicked);
         }
     }
+
+    
     private void GetButtonsOnScene()
     {
         Button[] buttons = FindObjectsOfType<Button>();
